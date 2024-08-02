@@ -18,7 +18,7 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: "https://jumia-clone-0.vercel.app/",
   methods: ["POST", "GET", "DELETE", "PUT"],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
