@@ -17,8 +17,19 @@ connectDB();
 // rest object
 const app = express();
 
+const allowedOrigins = [
+  "https://jumia-clone-0.vercel.app",
+  "http://127.0.0.1:5173"
+];
+
 const corsOptions = {
-  origin: "https://jumia-clone-0.vercel.app/",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["POST", "GET", "DELETE", "PUT"],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
